@@ -1,0 +1,102 @@
+﻿# 给APP签名
+
+标签（空格分隔）： android sign 
+
+　　译：[Sign Your App](https://developer.android.com/studio/publish/app-signing.html)
+　　
+　　安卓需要所有的app在安装之前使用证书进行数字签名。安卓使用证书来鉴定app的作者，证书是不需要被证书权威进行签名的。安卓应用通常使用自签名证书，开发者保持着证书的密钥。
+
+##签名概要
+　　你可以给你的app在debug模式和release模式下签名。android sdk生成一个证书来给debug模式的app进行签名，要给release包签名的话，需要自己去生成证书。
+
+##debug模式签名
+　　debug模式下，你使用**Android SDK tools**生成的debug证书给应用签名。该证书拥有一个已知密码的私钥，这样在你运行和调试应用的时候就不需要每次都输入密码了。
+　　当你从IDE运行和调试项目的时候，Android Studio会自动给你的debug模式下的app进行签名。debug签名的app是不能被分发出去的。
+　　默认情况下，debug配置使用的是debug密钥库，该keystore拥有一个已知的密码和一个已知密码的默认的key。该debug keystore位于`$HOME/ .android/debug.keystore`，如果该keystore不存在则会被创建出来。debug的build type会自动使用debug的`SigningConfig`。
+
+##release模式签名
+release模式下用自己的证书进行签名：
+> 1. **创建一个密钥库**。密钥库是一个包含了一系列私钥的二进制文件，你必须将你的密钥库保存在一个安全的地方。
+> 2. **创建一个私钥**。私钥代表该APP要被认证的实体，如公司或者个人。
+> 3. 给当前的module添加签名配置到build.gradle中:
+> ```groovy
+...
+android {
+    ...
+    defaultConfig { ... }
+    signingConfigs {
+        release {
+            storeFile file("myreleasekey.keystore")
+            storePassword "password"
+            keyAlias "MyReleaseKey"
+            keyPassword "password"
+        }
+    }
+    buildTypes {
+        release {
+            ...
+            signingConfig signingConfigs.release
+        }
+    }
+}
+...
+```
+> 4. 调用assembleRelease编译任务
+
+**注意:** 将release key和keystore的密码放入build.gradle中是不安全的。你可以配置build.gradle从环境变量中获取，或者让编译的进程每次提示你输入密码。
+    
+> + 从环境变量中获取密码
+
+> ```groovy
+storePassword System.getenv("KSTOREPWD")
+keyPassword System.getenv("KEYPWD")
+>```
+
+> - 如果你通过命令行来调用编译，你可以让编译进程提示你输入密码
+
+>```groovy
+storePassword System.console().readLine("\nKeystore password: ")
+keyPassword System.console().readLine("\nKey password: ")
+>```
+
+**警告：** 请妥善保管好你的keystore和private key。否则你将无法对你上传到app store上的app进行更新，因为你要用同样的key去签未来所有版本的app。
+
+下面将详细介绍如何用Android Studio来生成private key来给release版本的app签名。
+
+##用Android Studio给APP签名
+> 1. 在菜单栏上点击`build -> Generate Signed APK`
+> 2. 如果你没有keystore则点`Create New`，否则跳到第四步
+> 3. 如下图
+> 4. 在`Generate Signed Apk Wizard`窗口中选择keystore，并输入keystore和private key的密码
+> 5. 选择生成apk的路径和编译类型（release)和flavor
+
+##自动给APP签名
+> 1. 在project中右键项目，选择`Open Module Settings`
+> 2. 给这个签名配置命名（因为你可能创建多个配置），选择你的上面生成的Keystore文件，输入private key和keystore的密码
+> 3. 切到标签上的`Build Types`， 在`Signing Config`中选择刚才创建的config
+
+完成后就会在build.gradle中看到`SigningConfig`中会出现。你也可以在Gradle配置文件中指定你的签名设置[ Configuring Gradle Builds](https://developer.android.com/studio/build/build-variants.html#configureSigning)。
+
+##签名所需考虑的事
+你应该用相同的证书给应用签名，这样做的理由有如下几点：
+> + **app升级**：当系统安装一个升级的app，它会比较手机上已存在的该版本的应用的证书和新安装的这个版本是否一致。如果你用一个新的证书给该应用签名，你必须给这个应用分配一个不同的包名，这样就相当于安装一个全新的应用，而不是升级。
+> - **项目模块性**：安卓允许使用同一证书签名的应用运行在同一进程中。如果你把应用分模块部署，用户就可以独立升级某个模块了
+> - **通过权限进行代码和数据进行共享**：android提供了基于签名的执法权限，应用可以暴露功能给其他使用了指定证书签名的app.通过给不同的app使用相同的证书签名，并使用基于签名的权限检查，你的应用们就可以通过安全的方式进行分享代码和数据了。
+
+##保证私钥的安全
+　　如果第三方能够拿到你的私钥，他就能够签名并且分发应用来更换你的应用或者破坏它们。他也可以用你的身份去签名，分发应用来攻击其他的应用或系统或破坏，盗取用户信息。
+　　你的应用后续的升级版本都需要用该private key来签名的。一旦丢失，你就无法对你的应用进行升级。你作为一个开发者的声誉取决于你是否正确保存你的私钥。
+　　
+下面是保证key的安全性的一些措施：
+> + 密钥库和密钥使用强密码
+> - 不要让借给别人你的私钥，也不要让未认证的人知道你的keystore和key的密码
+> * 把含有私钥的keystore存放在安全的地方
+
+##debug证书过期
+自签名证书是用来个debug模式签名，有效期是365天。过期后，项目就就会编译不通过。
+
+**解决方法：**删除debug.keystore文件。文件位置在： OS X和linux上是：~/.android/，win7以上是 C:\Users\<user>\.android\。删除后，重新编译运行时，build tool会重新生成一个新的keystore和debug key。
+
+
+
+
