@@ -2,18 +2,18 @@
 
 标签： android sign 
 
-　　译：[Sign Your App](https://developer.android.com/studio/publish/app-signing.html)    
-　　
-　　安卓需要所有的app在安装之前使用证书进行数字签名。安卓使用证书来鉴定app的作者，证书是不需要被证书权威进行签名的。安卓应用通常使用自签名证书，开发者保持着证书的密钥。
+　　译：[Sign Your App](https://developer.android.com/studio/publish/app-signing.html)
+
+安卓需要所有的app在安装之前使用证书进行数字签名。安卓使用证书来鉴定app的作者，证书是不需要被证书权威进行签名的。安卓应用通常使用自签名证书，开发者保持着证书的密钥。
 
 ##签名概要
 　　你可以给你的app在debug模式和release模式下签名。android sdk生成一个证书来给debug模式的app进行签名，要给release包签名的话，需要自己去生成证书。
 
 ##debug模式签名
 　　debug模式下，你使用**Android SDK tools**生成的debug证书给应用签名。该证书拥有一个已知密码的私钥，这样在你运行和调试应用的时候就不需要每次都输入密码了。
-　　
+
 　　当你从IDE运行和调试项目的时候，Android Studio会自动给你的debug模式下的app进行签名。debug签名的app是不能被分发出去的。
-　　
+
 　　默认情况下，debug配置使用的是debug密钥库，该keystore拥有一个已知的密码和一个已知密码的默认的key。该debug keystore位于`$HOME/ .android/debug.keystore`，如果该keystore不存在则会被创建出来。debug的build type会自动使用debug的`SigningConfig`。
 
 ##release模式签名
