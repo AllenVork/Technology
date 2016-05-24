@@ -11,7 +11,9 @@
 
 ##debug模式签名
 　　debug模式下，你使用**Android SDK tools**生成的debug证书给应用签名。该证书拥有一个已知密码的私钥，这样在你运行和调试应用的时候就不需要每次都输入密码了。
+　　
 　　当你从IDE运行和调试项目的时候，Android Studio会自动给你的debug模式下的app进行签名。debug签名的app是不能被分发出去的。
+　　
 　　默认情况下，debug配置使用的是debug密钥库，该keystore拥有一个已知的密码和一个已知密码的默认的key。该debug keystore位于`$HOME/ .android/debug.keystore`，如果该keystore不存在则会被创建出来。debug的build type会自动使用debug的`SigningConfig`。
 
 ##release模式签名
@@ -85,6 +87,7 @@ keyPassword System.console().readLine("\nKey password: ")
 
 ##保证私钥的安全
 　　如果第三方能够拿到你的私钥，他就能够签名并且分发应用来更换你的应用或者破坏它们。他也可以用你的身份去签名，分发应用来攻击其他的应用或系统或破坏，盗取用户信息。
+　　
 　　你的应用后续的升级版本都需要用该private key来签名的。一旦丢失，你就无法对你的应用进行升级。你作为一个开发者的声誉取决于你是否正确保存你的私钥。
 　　
 下面是保证key的安全性的一些措施：
