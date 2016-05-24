@@ -1,6 +1,6 @@
 ﻿# 给APP签名
 
-标签（空格分隔）： `android` `sign`
+标签： `android` `sign`
 
 译：[Sign Your App](https://developer.android.com/studio/publish/app-signing.html)
 
@@ -21,7 +21,7 @@ release模式下用自己的证书进行签名：
 > 1. **创建一个密钥库**。密钥库是一个包含了一系列私钥的二进制文件，你必须将你的密钥库保存在一个安全的地方。
 > 2. **创建一个私钥**。私钥代表该APP要被认证的实体，如公司或者个人。
 > 3. 给当前的module添加签名配置到build.gradle中:
-> ```groovy
+> * ```groovy
 ...
 android {
     ...
@@ -68,7 +68,7 @@ keyPassword System.console().readLine("\nKey password: ")
 ##用Android Studio给APP签名
 > 1. 在菜单栏上点击`build -> Generate Signed APK`
 > 2. 如果你没有keystore则点`Create New`，否则跳到第四步
-> 3. 如图:[signstudio2.png](./signstudio2.png)
+> 3. 如图:[signstudio2.png](./img/signstudio2.png)
 > 4. 在`Generate Signed Apk Wizard`窗口中选择keystore，并输入keystore和private key的密码
 > 5. 选择生成apk的路径和编译类型（release)和flavor
 
