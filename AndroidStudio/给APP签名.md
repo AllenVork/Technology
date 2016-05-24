@@ -1,8 +1,8 @@
 ﻿# 给APP签名
 
-标签（空格分隔）： android sign 
+标签： android sign 
 
-　　译：[Sign Your App](https://developer.android.com/studio/publish/app-signing.html)
+　　译：[Sign Your App](https://developer.android.com/studio/publish/app-signing.html)    
 　　
 　　安卓需要所有的app在安装之前使用证书进行数字签名。安卓使用证书来鉴定app的作者，证书是不需要被证书权威进行签名的。安卓应用通常使用自签名证书，开发者保持着证书的密钥。
 
