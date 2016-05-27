@@ -62,7 +62,6 @@ D/CatUtil: initCatsAsync: end, 10 ms
 
 ##ISSUE
 > + 正常操作后，我们会发现日志并没有被打出来
-
 解决方法：
 > 1. adb shell
 > 2. setprop log.tag.`<tag>` `<level>`
