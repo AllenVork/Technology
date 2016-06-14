@@ -244,7 +244,7 @@ zip操作符首先请求足够的（128个)数据来填充缓存。在Rx中，�
 
 它会缓存所有当前无法处理的数据，直到Observer可以处理为止。你可以指定缓冲的数量，如果缓冲满了会导致数据流失败。
 
-![onBackPressureBuffer](./img/onBackPressureBuffer.png)
+![onBackpressureBuffer](./img/onBackpressureBuffer.png)
 ```Java
 Observable.interval(1, TimeUnit.MILLISECONDS)
     .onBackpressureBuffer(1000)
