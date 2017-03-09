@@ -18,13 +18,13 @@ ConstraintLayout 可以**不用嵌套布局**就可以创建复杂的布局。�
 ## 三. Getting start    
 ### Convert a layout
 你可以按照下面的步骤将已存在的布局转化为 ConstraintLayout ：    
-1. 打开现有布局，切换到 `Design` 标签
+1. 打开现有布局，切换到 `Design` 标签    
 2. 看到`Component Tree`，然后右击你的 layout ，选择`Convert ××Layout to ConstraintLayout`
 <img src="img/convert_layout.png" alt="Gitlab" title="install" width="800" />
 
 ### Create a new layout
 你可以直接创建一个 LayoutResourceFile 来创建ConstraintLayout，也可以按照下面的步骤：    
-1. 在项目的任意位置右击选择`File > New > XML > Layout XML`
+1. 在项目的任意位置右击选择`File > New > XML > Layout XML`    
 2. 输入 xml 文件名以及根布局`android.support.constraint.ConstraintLayout`
 
 **note:** 第二步可以直接输入 `ConstraintLayout`，finish 后它会有异常提示，点击提示即可。    
@@ -86,7 +86,7 @@ ConstraintLayout 中，将 Visibility 设置为 GONE 的话，实质是将这个
 > + Packed：view 会被 pack 到一起。    
 
 那么如何创建 Chains 呢？
-1. 选中所有要被链接在一起的 view 
+1. 选中所有要被链接在一起的 view     
 2. 右击任意一个 view 就会出现`Center Horizontally` 之类的选项（里面提供了很多方法，可以根据需要进行使用）来达到 LinearLayout 之类的效果
 
 <img src="gif/chain_1.gif" alt="Gitlab" title="install" width="400" /></br>
