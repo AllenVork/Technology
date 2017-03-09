@@ -85,7 +85,7 @@ ConstraintLayout 中，将 Visibility 设置为 GONE 的话，实质是将这个
 > * Weighted：可以像 LinearLayout 那样设置权重。当将 width/height 设置为 0dp 后，可以通过`app:layout_constraintHorizontal_weight="2"` 来设置权重。
 > + Packed：view 会被 pack 到一起。    
 
-那么如何创建 Chains 呢？
+那么如何创建 Chains 呢？    
 1. 选中所有要被链接在一起的 view     
 2. 右击任意一个 view 就会出现`Center Horizontally` 之类的选项（里面提供了很多方法，可以根据需要进行使用）来达到 LinearLayout 之类的效果
 
