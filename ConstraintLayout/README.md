@@ -29,13 +29,13 @@ ConstraintLayout 可以**不用嵌套布局**就可以创建复杂的布局。�
 1. 在项目的任意位置右击选择`File > New > XML > Layout XML`
 2. 输入 xml 文件名以及根布局`android.support.constraint.ConstraintLayout`
 
-**note: **第二步可以直接输入 `ConstraintLayout`，finish 后它会有异常提示，点击提示即可。    
+**note:** 第二步可以直接输入 `ConstraintLayout`，finish 后它会有异常提示，点击提示即可。    
 
 ---
 
 ### Add a constraint
 你可以从`Palette` 中将控件拖到编辑器中，该控件会有一些约束句柄（即小圆点）供你拖动来与其余的 view 建立约束条件。     
-<img src="gif/create_constraints.gif" alt="Gitlab" title="install" width="400" />
+<img src="gif/create_constraints.gif" alt="Gitlab" title="install" width="400" /></br>
 创建约束条件需要遵守下列原则：
 > + 每个 view 至少有2个约束条件：水平和垂直的约束。
 > - 你只能在同一个平面上的约束句柄和锚点（即另一个 view 的边缘）之间建立约束。即一个 view 的 left/right 只能与另一个 view 的 left/right 边建立约束，而不能与 top/bottom 边建立联系。
@@ -44,13 +44,12 @@ ConstraintLayout 可以**不用嵌套布局**就可以创建复杂的布局。�
 如要移除约束的话，可以选中该控件，点击一下该约束的约束句柄（即小圆点），约束即解除封印了。    
 如果你给一个 view 的两边（上下或者左右）都设置了约束的话，约束的 line 会被扳弯成螺丝状。    
 
-你可以使用约束来建立不同类型的布局，如下所示：
+你可以使用约束来建立不同类型的布局，如下所示：</br>
 <img src="img/cl_1.png" alt="Gitlab" title="install" />
 </br></br>
 <img src="img/cl_2.png" alt="Gitlab" title="install" />
 </br></br>
-<img src="img/cl_3.png" alt="Gitlab" title="install" />
-</br></br>
+<img src="img/cl_3.png" alt="Gitlab" title="install" /> 
 <img src="img/cl_4.png" alt="Gitlab" title="install" />
 </br></br>
 <img src="img/cl_5.png" alt="Gitlab" title="install" />
@@ -94,8 +93,8 @@ ConstraintLayout 中，将 Visibility 设置为 GONE 的话，实质是将这个
 
 <img src="gif/chain_1.gif" alt="Gitlab" title="install" width="400" />
 </br></br>
-<img src="gif/chain_2.gif" alt="Gitlab" title="install" width="400" />
-</br>
+<img src="gif/chain_2.gif" alt="Gitlab" title="install" width="400" /></br>
+<img src="gif/chains.gif" alt="Gitlab" title="install" width="400" /></br>
 譬如你选中 A, B, C 三个 view，然后右键点击 A，选择 `Center Horizontally` 这时3个 view 水平方向上就会平分 parent 布局。然后再选中一个 view ，右击选择`Align Top Edges`，这时三个 view 的顶部就对齐了。    
 </br>
 **note**: 设置 Align Top Edges 发现会出现并没有对齐的情况，这是因为设置这个后，相当与 C 和 B 的顶部对齐，B 和 A 的顶部对齐。如果你设置了 A 的 marginTop，B 和 C 不用设置就会与 A 的顶部对齐；但是你如果不设置 A，设置 B 的 marginTop 的话，那么 A 就会跑到顶部去，而 B 和 C 是对齐的。    
