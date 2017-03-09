@@ -1,7 +1,5 @@
 # Build a Responsive UI with ConstraintLayout
 
----
-
 ConstraintLayout 可以**不用嵌套布局**就可以创建复杂的布局。和 RelativeLayout 类似，所有的 view 都是通过和其余的 view 以及 parent 建立联系来布局的。ConstraintLayout 比 RelativeLayout 更加灵活，而且我们可以通过 Android Studio 自带的 **Layout Editor** 来拖控件进行布局来代替写 XML 文件。
 
 ## 一. Requirement    
