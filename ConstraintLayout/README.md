@@ -91,17 +91,20 @@ ConstraintLayout 中，将 Visibility 设置为 GONE 的话，实质是将这个
 1. 选中所有要被链接在一起的 view 
 2. 右击任意一个 view 就会出现`Center Horizontally` 之类的选项（里面提供了很多方法，可以根据需要进行使用）来达到 LinearLayout 之类的效果
 
-<img src="gif/chain_1.gif" alt="Gitlab" title="install" width="400" />
-</br></br>
+<img src="gif/chain_1.gif" alt="Gitlab" title="install" width="400" /></br>
 <img src="gif/chain_2.gif" alt="Gitlab" title="install" width="400" /></br>
 <img src="gif/chains.gif" alt="Gitlab" title="install" width="400" /></br>
 譬如你选中 A, B, C 三个 view，然后右键点击 A，选择 `Center Horizontally` 这时3个 view 水平方向上就会平分 parent 布局。然后再选中一个 view ，右击选择`Align Top Edges`，这时三个 view 的顶部就对齐了。    
 </br>
 **note**: 设置 Align Top Edges 发现会出现并没有对齐的情况，这是因为设置这个后，相当与 C 和 B 的顶部对齐，B 和 A 的顶部对齐。如果你设置了 A 的 marginTop，B 和 C 不用设置就会与 A 的顶部对齐；但是你如果不设置 A，设置 B 的 marginTop 的话，那么 A 就会跑到顶部去，而 B 和 C 是对齐的。    
 
+### Constrain to a guideline
+guideline 是一个抽象视图，对用户不可见。它能帮助你定位其余的 view。 你可以添加一个横向/纵向的 guideline ，它是一个抽象的 view ，对用户不可见。你可以根据相对于布局边缘的dp单位或百分比在布局中定位该 guideline（通过点击 guideline 边缘的圆圈进行切换）。    
+<img src="gif/guide_line.png" alt="Gitlab" title="install" width="600" />
 ### Using Spaces for negative margins
 ConstraintLayout 不支持设置负边距，但是我们可以通过`Space` 来变相处理。它其实是一个空的 view。将这个 view 的 size 作为负边距，然后将另一个 view 跟这个 view 对齐就行了。
 <img src="gif/space.gif" alt="Gitlab" title="install" width="600" />
+
 ### When to use Inference
 当你点击 toolbar 上的`Infer constraints` 命令（就是上面黄色的 bling bling 的星星），它会将你缺少的约束给添加进去，譬如上面我添加了3个 view 水平方向是平分的，顶部对齐，但是没有设置垂直方向的 margin 之类的。虽然在编辑器中看到的位置是正常的，但是运行到手机上后会跑到屏幕上方。这时如果我们点击这个按钮的话，它会根据当前 view 在屏幕上的位置为我们生成一个垂直方向的约束，但很多情况下往往不是我们想要的（譬如本应该设置 marginTop，它却设置的是 marginBottom）。个人建议时你将 view 拖到编辑器后，适当的调整下位置后，使用这个帮你补全，然后再去检查一遍。
 <img src="img/inference.png" alt="Gitlab" title="install" width="600" />
