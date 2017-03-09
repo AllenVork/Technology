@@ -9,9 +9,9 @@ ConstraintLayout 可以**不用嵌套布局**就可以创建复杂的布局。�
 
 ## 二. Add ConstraintLayout to your project
 检查是否安装了最新的 ConstraintLayout 库：    
-1.  点击 `Tools > Android > SDK Manager`
-2.  点击 `SDK Tools` 标签
-3.  展开 `Support Repository` ，勾选`ConstraintLayout for Android` 和 `Solver for ConstraintLayout`进行下载，下载时请注意版本号，因为下面有用到，我的是1.0.1。
+1.  点击 `Tools > Android > SDK Manager`    
+2.  点击 `SDK Tools` 标签    
+3.  展开 `Support Repository` ，勾选`ConstraintLayout for Android` 和 `Solver for ConstraintLayout`进行下载，下载时请注意版本号，因为下面有用到，我的是1.0.1。    
 4. 在 build.gradle 中添加依赖：`compile 'com.android.support.constraint:constraint-layout:1.0.1'`
 <img src="img/install_cl.png" alt="Gitlab" title="install" width="800" />
 
