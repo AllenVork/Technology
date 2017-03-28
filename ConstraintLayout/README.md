@@ -15,7 +15,7 @@ ConstraintLayout 可以**不用嵌套布局**就可以创建复杂的布局。�
 4. 在 build.gradle 中添加依赖：`compile 'com.android.support.constraint:constraint-layout:1.0.1'`
 <img src="img/install_cl.png" alt="Gitlab" title="install" width="800" />
 
-## 三. Getting start    
+## 三. Get started    
 ### Convert a layout
 你可以按照下面的步骤将已存在的布局转化为 ConstraintLayout ：    
 1. 打开现有布局，切换到 `Design` 标签    
@@ -109,5 +109,6 @@ ConstraintLayout 不支持设置负边距，但是我们可以通过`Space` 来�
 ### Adjust the view margins
 当我们给 view 建立约束时，这个约束的间距默认为8dp。我们可以通过点击 toolbar 上的 `8` 进行修改。
 <img src="img/default_margin.png" alt="Gitlab" title="install" width="600" />
+
 ---
 ## 现在我们可以愉快的做一个拖控件的程序员了
